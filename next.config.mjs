@@ -11,7 +11,18 @@ const config = {
   swcMinify: true,
   i18n: {
     locales: ["en"],
-    defaultLocale: "en",
+    defaultLocale: "en"
   },
+  images: {
+    domains: ["cdn.discordapp.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.discordapp.com",
+        port: "",
+        pathname: "/embed/avatars/**"
+      }
+    ]
+  }
 };
 export default config;
