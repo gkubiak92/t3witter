@@ -1,5 +1,6 @@
 import type { RouterOutputs } from "../../utils/api";
 import Image from "next/image";
+import { formatDistance } from "date-fns";
 
 type TweetProps = RouterOutputs["tweet"]["getAll"][number];
 
@@ -25,7 +26,14 @@ export const Tweet = ({
         )}
       </div>
       <div className="flex-1">
-        <div className="mb-1 font-bold">{author.name}</div>
+        <div className="mb-1">
+          <span className="mr-2 font-bold">{author.name}</span>
+          <span>
+            {formatDistance(createdAt, Date.now(), {
+              addSuffix: true,
+            })}
+          </span>
+        </div>
         <div className="whitespace-pre-wrap">{text}</div>
       </div>
     </div>

@@ -21,6 +21,12 @@ const config = {
         hostname: "cdn.discordapp.com",
         port: "",
         pathname: "/embed/avatars/**"
+      },
+      {
+        protocol: "https",
+        hostname: "cloudflare-ipfs.com",
+        port: "",
+        pathname: "/ipfs/**"
       }
     ]
   }

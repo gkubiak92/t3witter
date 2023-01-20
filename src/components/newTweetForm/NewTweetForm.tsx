@@ -12,7 +12,6 @@ type FormValues = z.infer<typeof tweetSchema>;
 
 export const NewTweetForm = () => {
   const { register, formState, handleSubmit } = useForm<FormValues>({
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
     resolver: zodResolver(tweetSchema),
   });
 
@@ -31,7 +30,7 @@ export const NewTweetForm = () => {
     >
       <textarea
         {...register("text")}
-        rows={8}
+        rows={4}
         className="w-full resize-none rounded-md border-gray-300 p-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
       />
       <Button
