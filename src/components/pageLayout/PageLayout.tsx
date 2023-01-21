@@ -7,7 +7,7 @@ type PageLayoutProps = {
 
 export const PageLayout = ({ children }: PageLayoutProps) => (
   <div className="h-screen w-screen bg-gray-50">
-    <main className="mx-auto min-h-full max-w-2xl border-x-2 border-x-gray-100 px-4">
+    <main className="mx-auto min-h-full max-w-2xl overflow-auto border-x-2 border-x-gray-100 px-4">
       <TopNav />
       {children}
     </main>
