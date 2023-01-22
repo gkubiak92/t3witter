@@ -15,7 +15,6 @@ export const Tweet = ({
   author,
   likes,
   authorId,
-  updatedAt,
   createdAt,
 }: TweetProps) => {
   const session = useSession();
