@@ -1,15 +1,19 @@
-import { NewTweetForm } from "../newTweetForm/NewTweetForm";
 import { api } from "../../utils/api";
 import { Tweet } from "../tweet/Tweet";
 import { Button } from "../button/Button";
 
 const LIMIT = 10;
 
-export const Timeline = () => {
+type TimelineProps = {
+  userId?: string;
+};
+
+export const Timeline = ({ userId }: TimelineProps) => {
   const { data, hasNextPage, fetchNextPage, isFetching } =
     api.tweet.getAll.useInfiniteQuery(
       {
         limit: LIMIT,
+        ...(userId && { userId }),
       },
       {
         getNextPageParam: (lastPage) => lastPage.nextCursor,
@@ -21,7 +25,6 @@ export const Timeline = () => {
 
   return (
     <div>
-      <NewTweetForm />
       <div className="mb-2">
         {tweets.map((tweet) => (
           <Tweet key={tweet.id} {...tweet} />

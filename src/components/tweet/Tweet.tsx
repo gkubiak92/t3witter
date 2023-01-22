@@ -5,6 +5,7 @@ import { formatDistance } from "date-fns";
 import { LikeButton } from "../likeButton/LikeButton";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
+import Link from "next/link";
 
 type TweetProps = RouterOutputs["tweet"]["getAll"]["tweets"][number];
 
@@ -61,7 +62,9 @@ export const Tweet = ({
         </div>
         <div className="flex-1">
           <div className="mb-1">
-            <span className="mr-2 font-bold">{author.name}</span>
+            <Link href={`/${authorId}`}>
+              <span className="mr-2 font-bold">{author.name}</span>
+            </Link>
             <span>
               {formatDistance(createdAt, Date.now(), {
                 addSuffix: true,
