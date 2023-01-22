@@ -11,11 +11,17 @@ export const tweetSchema = z.object({
 type FormValues = z.infer<typeof tweetSchema>;
 
 export const NewTweetForm = () => {
-  const { register, formState, handleSubmit } = useForm<FormValues>({
+  const utils = api.useContext();
+  const { register, formState, handleSubmit, reset } = useForm<FormValues>({
     resolver: zodResolver(tweetSchema),
   });
 
-  const { mutateAsync } = api.tweet.create.useMutation();
+  const { mutateAsync } = api.tweet.create.useMutation({
+    onSuccess: async () => {
+      await utils.tweet.getAll.invalidate();
+      reset();
+    },
+  });
 
   const handleOnSubmit = async (values: FormValues) => {
     await mutateAsync(values);
