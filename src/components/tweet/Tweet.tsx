@@ -6,6 +6,7 @@ import { LikeButton } from "../likeButton/LikeButton";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import Link from "next/link";
+import { useIsAuthenticated } from "../../hooks/useIsAuthenticated";
 
 type TweetProps = RouterOutputs["tweet"]["getAll"]["tweets"][number];
 
@@ -18,7 +19,7 @@ export const Tweet = ({
   createdAt,
 }: TweetProps) => {
   const session = useSession();
-  const isAuthenticated = session.status === "authenticated";
+  const isAuthenticated = useIsAuthenticated();
 
   const initialLikesCount = likes.length;
   const isLikedByMe = likes.some(

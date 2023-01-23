@@ -2,8 +2,11 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import { Timeline } from "../components/timeline/Timeline";
 import { NewTweetForm } from "../components/newTweetForm/NewTweetForm";
+import { useIsAuthenticated } from "../hooks/useIsAuthenticated";
 
 const Home: NextPage = () => {
+  const isAuthenticated = useIsAuthenticated();
+
   return (
     <>
       <Head>
@@ -12,7 +15,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="py-4">
-        <NewTweetForm />
+        {isAuthenticated && <NewTweetForm />}
         <Timeline />
       </div>
     </>
