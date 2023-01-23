@@ -18,6 +18,7 @@ export const Tweet = ({
   createdAt,
 }: TweetProps) => {
   const session = useSession();
+  const isAuthenticated = session.status === "authenticated";
 
   const initialLikesCount = likes.length;
   const isLikedByMe = likes.some(
@@ -76,6 +77,7 @@ export const Tweet = ({
             isLiked={isLiked}
             isLoading={isLoading}
             onClick={handleLikeTweetClick}
+            disabled={!isAuthenticated}
           />
         </div>
       </div>

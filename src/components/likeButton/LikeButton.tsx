@@ -6,6 +6,7 @@ type LikeButtonProps = {
   isLiked: boolean;
   onClick: () => void;
   isLoading?: boolean;
+  disabled?: boolean;
 };
 
 export const LikeButton = ({
@@ -13,14 +14,18 @@ export const LikeButton = ({
   isLiked,
   onClick,
   isLoading,
+  disabled,
 }: LikeButtonProps) => {
   const Icon = isLiked ? AiFillHeart : AiOutlineHeart;
 
   return (
     <div className="flex items-center gap-2">
       <Icon
-        onClick={isLoading ? undefined : onClick}
-        className={clsx(!isLoading && "cursor-pointer")}
+        onClick={disabled || isLoading ? undefined : onClick}
+        className={clsx("cursor-pointer", {
+          "text-red-500": isLiked,
+          "cursor-default": isLoading || disabled,
+        })}
       />
       <span>{likesCount}</span>
     </div>

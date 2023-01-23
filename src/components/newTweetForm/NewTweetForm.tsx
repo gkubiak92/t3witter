@@ -30,12 +30,12 @@ export const NewTweetForm = () => {
 
   return (
     <form
-      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       onSubmit={handleSubmit(handleOnSubmit)}
       className="my-4 flex w-full flex-col gap-4"
     >
       <textarea
         {...register("text")}
+        placeholder="Share your thoughts..."
         rows={4}
         className="w-full resize-none rounded-md border-gray-300 p-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
       />

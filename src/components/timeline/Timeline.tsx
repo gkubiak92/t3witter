@@ -17,6 +17,7 @@ export const Timeline = ({ userId }: TimelineProps) => {
       },
       {
         getNextPageParam: (lastPage) => lastPage.nextCursor,
+        refetchOnWindowFocus: false,
       }
     );
 
